@@ -1,0 +1,73 @@
+group
+- id (PK)
+- book id (FK)
+
+book
+- id (PK)
+
+member
+- id (PK)
+
+membership
+- id (PK)
+- group id (FK)
+- member id (FK)
+
+discussion (thread)
+- id (PK)
+- group id (FK)
+
+comment
+- id (PK)
+- discussion id (FK)
+- member id (FK)
+
+bookmark
+- id (PK)
+- member id (FK)
+- book id (FK)
+
+reading (have-read)
+- id (PK)
+- member id (FK)
+- book id (FK)
+
+
+
+
+
+
+
+
+
+details:
+
+
+group
+- title
+- description
+
+member
+- username (unique for login)
+- password
+
+book
+- title (not null)
+- ISBN (unique)
+
+reading (have-read)
+- date (optional)
+
+bookmark
+- no details
+
+membership
+- no details
+
+discussion
+- title
+- datetime of creation
+
+comment
+- text
+- datetime of creation
