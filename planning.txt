@@ -1,0 +1,32 @@
+https://bookclubs.com/
+- email invites, to-read, reading-now, and have-read-with-rating book lists, polls to choose books and schedule meetings, meeting scheduling, top books (in categories too), recommendations, no profile view
+https://www.goodreads.com/group
+- huge public book clubs, discussions, book club activity per book("blank has just read", "marked to-read", "marked favorite", "rated")
+https://forums.onlinebookclub.org/
+- forum based, profiles have reading goals, searching through specific user posts, currently reading, groups in, add friend/foe(??)
+https://silentbook.club/pages/chapter-map
+- collection of groups made for the primary purpose of meeting to read, basically just a database of instagram pages with reading events around the world
+https://www.bookmovement.com/landing_2/
+- "reading guide" for books with discussion questions, reviews, and intro | personal queue (to-read) | amazon prices in book search | top recommended books | book lists
+
+FEATURES:
+
+no sign in needed:
+browsing books by category
+discussion topics paired with books (and book-view page)
+search books
+search text in book
+
+batch:
+meeting scheduling (in-person/online -> date and time)
+forum to discuss online throughout
+email invites
+polls (meeting and next-books and general)
+
+profile:
+book-lists: want-to-read, have-read, currently-reading (not a list), recommended-to-me
+book-list activity (just read, started reading, added to reading list)
+reading goal
+friending
+favorite quotes
+reviews on books (with rating)
