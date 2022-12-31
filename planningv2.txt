@@ -1,0 +1,72 @@
+Lists:
+	- To read
+	- Have read
+	- Currently reading
+
+Home Page:
+	- Navbar
+		○ Sign up
+		○ Log in
+		○ User search
+		○ Book search
+
+Users:
+
+Not logged in or not friend profile:
+	- Display name
+	- Email
+	- Reading goal?
+	- Top quotes
+	- Public book lists
+	- Public posts
+
+Friend profile:
+	- All lists
+	- All posts
+	- Activity log
+		○ Adding to list/making post
+		○ Can comment on
+	- Direct message
+	- Batch membership list
+
+Own profile:
+	- Change name/email/password
+	- Edit lists
+	- Make new Post
+	- Profile picture
+	- Favorites
+		○ Genres
+		○ Books
+		○ authors
+
+Books:
+
+Not logged in:
+	- Title
+	- Author
+	- Genre
+	- Quote search
+
+Logged in:
+	- Add to (list)
+	- Recommend to (friend)
+	- Save quote to profile
+
+
+Batches:
+
+Not logged in:
+	- Batch name
+	- Currently reading
+		○ Schedule
+	- Have read
+	- Member list
+
+Logged in:
+	- Polls
+	- Discussions
+
+Public Blog Posts (works like any forum but designed to focus on original post):
+	- Can create or comment on created if logged in
+	- Creator
+	- Topic
