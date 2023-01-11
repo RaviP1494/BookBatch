@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Search books!</h2>
+
+<div id="book-search-div">
+    <input id="book-search-input" type="text" name="book-search-input">
+    <button id="book-search-btn">Go</button>
+</div>
+<div id="book-search-results-div">
+    <ul id="results-list"></ul>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+<script src="../../static/search.js"></script>
+{% endblock %}

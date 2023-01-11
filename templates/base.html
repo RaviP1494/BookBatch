@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=1, initial-scale=1.0">
     <title>
         {% block title %}
-            Home Page    
+        Home Page
         {% endblock %}
     </title>
 </head>
+
 <body>
     <!-- {% if request.endpoint != None %}
     {% endif %} -->
-    {% if not g.user %}
-    Sign up/Login
-    {% else %}
-    Hi
-    {% endif %}
+    <div>
+        <nav>
+            {% if not g.user %}
+
+            <a href="/signup">Sign up</a>
+            <a href="/login">Login</a> |
+
+            {% else %}
+
+            <a href="/users/{{g.user.id}}">{{g.user.display_name}}</a>
+            <a href="/logout">Log out</a>
+
+            {% endif %}
+            <a href="/books/search">Search Books</a>
+            <a href="/users/search">Search Users</a> |
+            <hr>
+        </nav>
+    </div>
     {% block content %}
     {% endblock %}
+    <ul id="temp"></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
+    <!-- <script src="/static/base.js"></script> -->
 </body>
+
 </html>
