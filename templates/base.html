@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <title>
+        {% block title %}
+            Home Page    
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <!-- {% if request.endpoint != None %}
+    {% endif %} -->
+    {% if not g.user %}
+    Sign up/Login
+    {% else %}
+    Hi
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
