@@ -23,41 +23,58 @@ function formatSearchTerm(input) {
     return input.split(' ').join('+');
 }
 
-function extractBookData(doc){
+function stripBookKey(book_key) {
+    const temp = book_key.split('/');
+    if (temp.length === 3) {
+        return temp[2];
+    }
+}
+// function formatBookQuery(book_key){
+//     return `https://openlibrary.org/${book_key}.json`;
+// }
+
+function extractBookData(doc) {
     const title = doc.title ? doc.title : null;
-    const book_key = doc.key;
+    const book_key = stripBookKey(doc.key);
     //^ unique openlibrary identifier
     const author_names = typeof doc.author_name !== 'string' ? doc.author_name : null;
     let author = '';
-    if(author_names){
+    if (author_names) {
         let i = 0;
         for (const author_name of author_names) {
-            author+= i<author_names.length ? `${author_name}|` : `${author_name}`;
+            author += author_name;
             i++;
         }
     }
-    else{
+    else {
         author = author_names;
     }
     return {
-        Title:title,
-        Author:author,
-        Key:book_key
+        title: title,
+        author: author,
+        book_key: book_key
     };
 }
 
-function makeLI(obj) {    
+function makeLI(obj) {
+    const { title, author, book_key } = obj;
     const li = document.createElement('li');
-    const infoEl = document.createElement('p');
-    const favBtn = document.createElement('button');
-    favBtn.innerText = "Favorite"
-    favBtn.setAttribute('data-book-key', `${obj['Key']}`)
-    for (const key in obj) {
-        infoEl.innerText = infoEl.innerText + `${key}:${obj[key]}  `;
-    }
 
-    li.append(infoEl);
-    infoEl.prepend(favBtn);
+    const infoEl = document.createElement('p');
+    const infoDiv = document.createElement('div');
+
+    const favBtnAnchor = document.createElement('a');
+    const favBtn = document.createElement('button');
+    favBtn.innerText = "View";
+
+
+    favBtnAnchor.setAttribute('href', `/books/${book_key}`);
+    favBtnAnchor.setAttribute('data-book-key', `${book_key}`);
+    infoEl.innerText = `${title} by ${author}`
+    infoDiv.append(infoEl);
+    li.append(infoDiv);
+    favBtnAnchor.append(favBtn);
+    infoDiv.prepend(favBtnAnchor);
     return li;
 }
 
@@ -67,9 +84,9 @@ searchBtn.addEventListener("click", function (e) {
     search(searchInput.value);
 })
 
-resultsList.addEventListener("click", function(e){
-    e.preventDefault();
-    if(e.target.tagName === 'BUTTON'){
-        console.log(e.target.dataset.bookKey);
-    }
-})
+// resultsList.addEventListener("click", function(e){
+//     e.preventDefault();
+//     if(e.target.tagName === 'BUTTON'){
+//         bookKey = e.target.dataset.bookKey;
+//     }
+// })

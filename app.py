@@ -47,6 +47,10 @@ def root():
 def book_search():
     return render_template("/books/search.html")
 
+@app.route("/books/<str:work_id>")
+def work_view(work_id):
+    print()
+
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -83,8 +87,8 @@ def login():
             return redirect("/")
     return render_template("/users/login.html", form=form)
 
-@app.route("/users/<int:uid>")
-def profile(uid):
+@app.route("/users/profile")
+def profile():
     return render_template("/users/user.html")
 
 @app.route("/logout")
