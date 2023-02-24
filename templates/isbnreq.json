@@ -1,0 +1,182 @@
+{
+    "OLID:OL32004105M": {
+        "url": "https://openlibrary.org/books/OL32004105M/Atlas_Shrugged",
+        "key": "/books/OL32004105M",
+        "title": "Atlas Shrugged",
+        "authors": [
+            {
+                "url": "https://openlibrary.org/authors/OL59188A/Ayn_Rand",
+                "name": "Ayn Rand"
+            },
+            {
+                "url": "https://openlibrary.org/authors/OL2865776A/Scott_Brick",
+                "name": "Scott Brick"
+            }
+        ],
+        "number_of_pages": 4,
+        "identifiers": {
+            "isbn_10": [
+                "1433256193"
+            ],
+            "isbn_13": [
+                "9781433256196"
+            ],
+            "openlibrary": [
+                "OL32004105M"
+            ]
+        },
+        "publishers": [
+            {
+                "name": "Blackstone Publishing"
+            },
+            {
+                "name": "Blackstone Audio, Inc."
+            }
+        ],
+        "publish_date": "Dec 01, 2008",
+        "subjects": [
+            {
+                "name": "Fiction",
+                "url": "https://openlibrary.org/subjects/fiction"
+            },
+            {
+                "name": "Capitalism in fiction",
+                "url": "https://openlibrary.org/subjects/capitalism_in_fiction"
+            },
+            {
+                "name": "Egoism",
+                "url": "https://openlibrary.org/subjects/egoism"
+            },
+            {
+                "name": "Egoism in fiction",
+                "url": "https://openlibrary.org/subjects/egoism_in_fiction"
+            },
+            {
+                "name": "Capitalism",
+                "url": "https://openlibrary.org/subjects/capitalism"
+            },
+            {
+                "name": "Objectivity",
+                "url": "https://openlibrary.org/subjects/objectivity"
+            },
+            {
+                "name": "Objectivity in fiction",
+                "url": "https://openlibrary.org/subjects/objectivity_in_fiction"
+            },
+            {
+                "name": "Objectivism (Philosophy)",
+                "url": "https://openlibrary.org/subjects/objectivism_(philosophy)"
+            },
+            {
+                "name": "Adventure stories",
+                "url": "https://openlibrary.org/subjects/adventure_stories"
+            },
+            {
+                "name": "open_syllabus_project",
+                "url": "https://openlibrary.org/subjects/open_syllabus_project"
+            },
+            {
+                "name": "Mystery story, Who is John Galt?",
+                "url": "https://openlibrary.org/subjects/mystery_story,_who_is_john_galt?"
+            },
+            {
+                "name": "Egoism -- Fiction.",
+                "url": "https://openlibrary.org/subjects/egoism_--_fiction."
+            },
+            {
+                "name": "Capitalism -- Fiction.",
+                "url": "https://openlibrary.org/subjects/capitalism_--_fiction."
+            },
+            {
+                "name": "Objectivism (Philosophy) -- Fiction.",
+                "url": "https://openlibrary.org/subjects/objectivism_(philosophy)_--_fiction."
+            },
+            {
+                "name": "Adventure stories.",
+                "url": "https://openlibrary.org/subjects/adventure_stories."
+            },
+            {
+                "name": "Science fiction.",
+                "url": "https://openlibrary.org/subjects/science_fiction."
+            },
+            {
+                "name": "American fiction (fictional works by one author)",
+                "url": "https://openlibrary.org/subjects/american_fiction_(fictional_works_by_one_author)"
+            },
+            {
+                "name": "Egoism -- Fiction",
+                "url": "https://openlibrary.org/subjects/egoism_--_fiction"
+            },
+            {
+                "name": "Capitalism -- Fiction",
+                "url": "https://openlibrary.org/subjects/capitalism_--_fiction"
+            },
+            {
+                "name": "Objectivity -- Fiction",
+                "url": "https://openlibrary.org/subjects/objectivity_--_fiction"
+            },
+            {
+                "name": "Politics and government",
+                "url": "https://openlibrary.org/subjects/politics_and_government"
+            },
+            {
+                "name": "Fiction, science fiction, general",
+                "url": "https://openlibrary.org/subjects/fiction,_science_fiction,_general"
+            },
+            {
+                "name": "Success",
+                "url": "https://openlibrary.org/subjects/success"
+            },
+            {
+                "name": "Power (Social sciences)",
+                "url": "https://openlibrary.org/subjects/power_(social_sciences)"
+            },
+            {
+                "name": "Individuality",
+                "url": "https://openlibrary.org/subjects/individuality"
+            },
+            {
+                "name": "Classical literature",
+                "url": "https://openlibrary.org/subjects/classical_literature"
+            },
+            {
+                "name": "Science fiction",
+                "url": "https://openlibrary.org/subjects/science_fiction"
+            }
+        ],
+        "subject_people": [
+            {
+                "name": "Dagny Taggart",
+                "url": "https://openlibrary.org/subjects/person:dagny_taggart"
+            },
+            {
+                "name": "John Galt",
+                "url": "https://openlibrary.org/subjects/person:john_galt"
+            },
+            {
+                "name": "Hank Rearden",
+                "url": "https://openlibrary.org/subjects/person:hank_rearden"
+            },
+            {
+                "name": "Francisco d'Anconia",
+                "url": "https://openlibrary.org/subjects/person:francisco_d'anconia"
+            },
+            {
+                "name": "James Taggart",
+                "url": "https://openlibrary.org/subjects/person:james_taggart"
+            }
+        ],
+        "notes": "Source title: Atlas Shrugged (New Edition)",
+        "links": [
+            {
+                "title": "Wikipedia Summary",
+                "url": "http://en.wikipedia.org/wiki/Atlas_Shrugged"
+            }
+        ],
+        "cover": {
+            "small": "https://covers.openlibrary.org/b/id/10672349-S.jpg",
+            "medium": "https://covers.openlibrary.org/b/id/10672349-M.jpg",
+            "large": "https://covers.openlibrary.org/b/id/10672349-L.jpg"
+        }
+    }
+}

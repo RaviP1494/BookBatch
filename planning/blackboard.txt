@@ -1,0 +1,159 @@
+okay. so. i'm making edition.html. i've got a request that gives me a shitton of data about the book.
+
+and it takes open library id's. if i just took a second to notice that, and fully read through the api, it would've saved me hours of work. but, better to have worked in waste than to not have worked at all at this point in my life lol.
+
+ALRIGHT.
+
+so, to summarize, i'm a dumbass.
+
+AGAIN. you know what would be a nice feature to add? a place to write with exact timestamps based on onChange(). i should add that. a timestamp any time you stop typing for x amount of seconds.
+
+let's speak in small words so it's easier to look back and read simply. cause APPARENTLY I DON'T DO SO WELL WITH READING BIG AMOUNTS OF WORDS TO SAY SIMPLE THINGS.
+
+editions.js
+    - add cover img
+    - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+working on data extraction:
+    - Array.isArray()
+
+so let's say i extract the data by:
+    - getting it to show the key and values of all the objects
+    - listed all of them
+    - and then took out the generalized ones that i don't need?
+
+...yes.
+
+makeWorkCard(){
+    workCardDiv
+        cardTitleDiv
+            cardTitleAnchor
+        cardImg
+        bottomDiv
+            editionCountP
+            firstPublishYearP
+}
+
+makeEditionCard(){
+    editionDiv
+        titleDiv
+        coverDiv
+        publishersDiv
+        publishDateDiv
+        languagesDiv
+}
+
+make the edition card on editions.js have:
+
+editionCardDiv
+    cardTitleDiv
+    cardImg
+    bottomDiv
+        everything else. for now.
+
+so make a method for data extraction first.
+
+after we finish this, we'll work on the edition page to really show everything? does that make sense? or do we just want to show publisher.
+
+editions page is fine with the data it has right now, but i should generalize the css as soon as i finish making the data extraction for edition.json
+
+user
+    - posts
+        - home page
+        - show in center of nav
+        - separate nav under top nav for:
+            - my posts
+            - friends posts
+            - all posts
+    - lists
+        - books read
+        - when adding a book, add page count
+    - friendships
+        - send messages
+        - recommend books
+    - search users
+        - open profile
+            - add friend
+    
+books
+    - start reading
+    - mark as read (add page count if not in edition)
+    - recommend to
+
+
+
+
+let's start with user lists. right now, we have favorites. we need to be able to add generalized lists. how?
+
+    - user
+        - reading-now
+    - book
+    - book-collect
+        - id
+        - type
+            - have-read
+            - favorites
+            - recommended
+                - relationship
+            - custom_name
+        - user_id
+        - edition_id
+    - recommendation
+        - id
+        - recipient_id
+        - sender_id
+        - edition_id
+
+
+
+okay. generalized list model was done, and i got some css practice in for later and a whole new IDE. sucks i can't get the html autocomplete to work, but i can make it work with shortcuts for sure.
+
+ALRIGHT. SO. what have we got? 
+- book search
+- work/editions view
+- edition view
+- user view showing favorites
+
+not all that much. so. what can i do now? i want to finish the list functionality first and have it show up on the user profile.
+then, friendship functionality with direct messages.
+    - have read
+    - named lists
+    - friendships
+    - recommendations/direct messages
+then, making posts.
+    - new post route
+    - buttons
+
+have read
+    - added to model
+   
+
+
+
+ALRIGHT. SO. AGAIN. 2/23 7:36 AM.
+
+I've just added custom lists to the back end.
+
+Now I want to work on:
+
+    - user search
+    - friendships
+    - direct messages
+        - send from receiver user.html
+    - recommendations
+        - send from edition.html, dropdown friends list
+
+then i'll figure out posts after.

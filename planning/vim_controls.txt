@@ -1,0 +1,29 @@
+h-l - left-right
+j-k - down-up
+i-I-a-A - insert mode left | - insert mode line start - insert mode right | - insert mode line end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

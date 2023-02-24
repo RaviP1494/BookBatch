@@ -1,15 +1,27 @@
 {% extends 'base.html' %}
+
+{% block link %}
+<link rel="stylesheet" href="/static/bookSearch.css">
+{% endblock %}
 {% block content %}
-
-<h2>Search books!</h2>
-
-<div id="book-search-div">
-    <input id="book-search-input" type="text" name="book-search-input">
-    <button id="book-search-btn">Go</button>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<div id="book-search-div" class="book-search-div">
+    <h2>Search books!</h2>
+    <form class="book-search-form">
+        <input id="book-search-input" type="text" name="book-search-input">
+        <button id="book-search-btn" class="book-search-btn">Go</button>
+    </form>
 </div>
-<div id="book-search-results-div">
-    <ul id="results-list"></ul>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
-<script src="/static/search.js"></script>
+<div class="results-div" id="results-div"></div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/bookSearch.js"></script>
 {% endblock %}

@@ -30,3 +30,14 @@ reading goal
 friending
 favorite quotes
 reviews on books (with rating)
+
+
+1/23 9:07 am
+
+search page
+edition-listing page
+user profile page
+add edition to user list
+my lists page
+
+then make it look good

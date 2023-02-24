@@ -1,0 +1,66 @@
+body {
+    background-color: rgb(14,5,36);
+    color: antiquewhite;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: black;
+    width: 100%;
+    padding: .2rem;
+}
+
+.nav-div-left {
+    position:relative;
+    left: .1rem;
+    text-shadow: -.3rem -.3rem .3rem yellow;
+    margin-top:.4rem;
+    margin-bottom:.4rem;
+}
+
+.nav-div-right {
+    position:relative;
+    right: .3rem;
+    text-shadow: .3rem -.3rem .3rem yellow;
+    margin-top:.4rem;
+    margin-bottom:.4rem;
+}
+
+
+.nav-anchor {
+    transition-duration: 1s;
+    transition-property: all;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    border: 2px solid darkblue;
+    padding-left: .5rem;
+    padding-right: .5rem;
+    background-color: black;
+    border-radius: 3rem;
+}
+
+.nav-anchor:hover {
+    color: goldenrod;
+    background-color: white;
+    border: 2px solid silver;
+}
+
+.child-content{
+    margin-top: 4rem;
+}
+
+.title-div-header{
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: -1;
+}

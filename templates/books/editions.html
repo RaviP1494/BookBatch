@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block link %}
+<link rel="stylesheet" href="/static/editions.css">
+{% endblock %}
+
+{% block content %}
+<div id="container-div" class="editions-container">
+    <div id="work-div" class="header-div" data-work-id="{{work_id}}"></div>
+    <div id="editions-container-div" class="cards-container"></div>
+</div>    
+
+<script src="/static/editions.js"></script>
+{% endblock %}

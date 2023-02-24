@@ -1,0 +1,57 @@
+.book-search-div {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid green;
+    width: 80%;
+    padding-bottom: 15px;
+    min-width: fit-content;
+    align-items: center;
+}
+
+.book-search-form {
+    /* margin: auto; */
+}
+
+.book-search-btn {
+    transition-duration: .4s;
+}
+
+.book-search-btn:hover {
+    color: goldenrod;
+}
+
+.book-result-div {
+    display: flex;
+}
+
+.results-div{
+    display:flex;
+    flex-wrap: wrap;
+    /* margin: auto; */
+    width: 80%;
+}
+
+.card-div{
+    display:flex;
+    flex-direction:column;
+    border: 5px solid green;
+    width: 200px;
+}
+
+.card-author-div{
+    flex-grow: 3;
+}
+.card-img{
+    width:200px;
+}
+
+.card-bottom-div{
+    display:flex;
+    flex-direction: column;
+}
+
+.search-index-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

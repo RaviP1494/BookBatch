@@ -1,5 +1,4 @@
 const ul = document.querySelector('#temp');
-
 // axios.get('https://openlibrary.org/isbn/9788497930772.json')
 //     .then(resp => console.log(resp))
 //     .catch(err => console.log(`error: ${err}`));

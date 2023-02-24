@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block link %}
+<link rel="stylesheet" href="/static/userSearch.css">
+{% endblock %}
+{% block content %}
+<div id="user-search-div" class="user-search-div">
+    <h2>Search user!</h2>
+    <form class="user-search-form">
+        <input id="user-search-input" type="text" name="q">
+        <button id="user-search-btn" class="user-search-btn">Go</button>
+    </form>
+</div>
+{% if users %}
+<div class="results-div" id="results-div">
+    <ul>
+        {% for user in users %}
+        <li><a href="/users/{{user.user_name}}">{{user.user_name}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+{% endblock %}
+{% block scripts %}
+<script src="/static/userSearch.js"></script>
+{% endblock %}
