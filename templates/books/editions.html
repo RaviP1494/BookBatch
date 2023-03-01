@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block link %}
-<link rel="stylesheet" href="/static/editions.css">
+<link rel="stylesheet" href="/static/styles.css">
 {% endblock %}
 
 {% block content %}
 <div id="container-div" class="editions-container">
-    <div id="work-div" class="header-div" data-work-id="{{work_id}}"></div>
+    <div id="work-detail-div" class="work-detail-div" data-work-id="{{work_id}}"></div>
     <div id="editions-container-div" class="cards-container"></div>
 </div>    
 

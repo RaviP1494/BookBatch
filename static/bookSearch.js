@@ -26,8 +26,8 @@ async function search(q,pageNum=1) {
 
 async function makePageIndex(responseCount) {
     const indexDiv = document.createElement('div');
-    indexDiv.setAttribute('id', 'search-index-div');
-    indexDiv.setAttribute('class', 'search-index-div');
+    indexDiv.setAttribute('id', 'index-div');
+    indexDiv.setAttribute('class', 'index-div');
     const pageCount = (responseCount / 100) + 1
     for (let i = 1; i < pageCount + 1; i++) {
         const pageAnchor = document.createElement('a');
@@ -36,7 +36,7 @@ async function makePageIndex(responseCount) {
         pageAnchor.innerText = `| ${i} |`;
         indexDiv.append(pageAnchor);
     }
-    const bodyEl = document.querySelector('#child-content');
+    const bodyEl = document.querySelector('#body-wrapper');
     bodyEl.append(indexDiv);
     indexDiv.addEventListener('click', searchPageNumClick);
 }
@@ -116,33 +116,31 @@ function makeWorkCard(obj) {
     workCardDiv.setAttribute('class', 'card-div');
 
     const cardTitleDiv = document.createElement('div');
-    cardTitleDiv.setAttribute('class', 'card-title-div');
+    cardTitleDiv.setAttribute('class', 'work-card-title-div');
     const titleAnchor = document.createElement('a');
 
     const cardAuthorDiv = document.createElement('div');
-    cardAuthorDiv.setAttribute('class', 'card-author-div');
+    cardAuthorDiv.setAttribute('class', 'work-card-author-div');
     const authorP = document.createElement('p');
 
     const coverImg = document.createElement('img');
     if (cover_id) { coverImg.setAttribute('src', `https://covers.openlibrary.org/b/id/${cover_id}-M.jpg`); }
     else { coverImg.setAttribute('src', `https://dictionary.cambridge.org/us/images/full/book_noun_001_01679.jpg?version=5.0.288`); }
-    coverImg.setAttribute('class', 'card-img');
+    coverImg.setAttribute('class', 'work-card-img');
 
     const bottomDiv = document.createElement('div');
-    bottomDiv.setAttribute('class', 'card-bottom-div');
+    bottomDiv.setAttribute('class', 'work-card-bottom-div');
     const editionCountP = document.createElement('p');
     const firstPublishYearP = document.createElement('p');
     // coverImg.hidden = true;
 
-    titleAnchor.setAttribute('href', `${work_id}`)
-    titleAnchor.innerText = title;
+    cardTitleDiv.innerText = title;
 
     authorP.innerText = `by ${author}`;
 
     editionCountP.innerText = `${edition_count} editions`;
     firstPublishYearP.innerText = `First published in ${first_publish_year}`;
 
-    cardTitleDiv.append(titleAnchor);
     cardAuthorDiv.append(authorP);
     bottomDiv.append(editionCountP);
     bottomDiv.append(firstPublishYearP);
@@ -152,6 +150,10 @@ function makeWorkCard(obj) {
     workCardDiv.append(cardAuthorDiv);
     workCardDiv.append(coverImg);
     workCardDiv.append(bottomDiv);
+
+    workCardDiv.addEventListener('click',function(e){
+        window.location.href = `/books/${work_id}`;
+    });
 
     return workCardDiv;
     // favBtnAnchor.setAttribute('data-book-key', `${work_id}`);

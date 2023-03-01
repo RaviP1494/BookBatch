@@ -8,10 +8,16 @@
 {% if g.user %}
 <form id="favorite-form" action="/books/{{edition_id}}/usercollect/favorites" method="POST"><button>Favorite</button></form>
 <form id="have-read-form" action="/books/{{edition_id}}/usercollect/read_list" method="POST"><button>Mark as Read</button></form>
+{% if friends %}
 <form id="recommendation-form" action="/books/{{edition_id}}/recommend" method="POST">
-    <input name="receiver_name" type="text">
+    <select name="receiver_name" type="select" required>
+    {% for friend in friends %} 
+        <option value="{{friend.user_name}}">{{friend.user_name}}</option>
+    {% endfor %}
+    </select>
     <button>Recommend</button>
 </form>
+{% endif %}
 {% endif %}
 <div id="edition-container-div" class="edition-container" data-edition-id="{{edition_id}}"></div>
 

@@ -20,9 +20,9 @@ app.config["SECRET_KEY"] = "temporary"
 
 connect_db(app)
 
-with app.app_context():
-    db.drop_all()
-    db.create_all()
+# with app.app_context():
+    # db.drop_all()
+    # db.create_all()
 
 
 def do_login(user):
@@ -59,7 +59,11 @@ def workView(work_id):
 
 @app.route("/books/editions/<string:edition_id>")
 def editionView(edition_id):
-    return render_template("/books/edition.html", edition_id=edition_id)
+    if(g.user and g.user.friends):
+        friends = g.user.friends
+    else:
+        friends = None
+    return render_template("/books/edition.html", edition_id=edition_id, friends=friends)
 
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -100,19 +104,16 @@ def login():
 
 @app.route("/users/<string:uName>")
 def profile(uName):
-    if CURR_USER_KEY in session:
-        user = User.query.filter_by(user_name=uName).first()
-        favorites = BookCollect.query.filter_by(
-            user_id=user.id, collection_name="favorites"
-        )
-        read_list = BookCollect.query.filter_by(
-            user_id=user.id, collection_name="read_list"
-        )
-        return render_template(
-            "/users/user.html", user=user, favorites=favorites, read_list=read_list
-        )
-    else:
-        return redirect("/")
+    user = User.query.filter_by(user_name=uName).first()
+    favorites = BookCollect.query.filter_by(
+        user_id=user.id, collection_name="favorites"
+    )
+    read_list = BookCollect.query.filter_by(
+        user_id=user.id, collection_name="read_list"
+    )
+    return render_template(
+        "/users/user.html", user=user, favorites=favorites, read_list=read_list
+    )
 
 
 @app.route("/users/search")
@@ -133,7 +134,7 @@ def addFriend(uName):
     db.session.add(g.user)
     db.session.add(userToAdd)
     db.session.commit()
-    return redirect('/')
+    return redirect(f'/users/{uName}')
 
 
 @app.route("/users/<string:uName>/sendmessage", methods=["POST"])

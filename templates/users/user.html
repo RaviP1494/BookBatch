@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <h1>{{user.user_name}}</h1>
 <hr>
-{% if g.user.id != user.id %}
-    <form action="{{user.user_name}}/addfriend" method="POST">
-        <button>Add friend</button>
-    </form>
-    <form action="{{user.user_name}}/sendmessage" method="POST">
-        <input name="content" type="text">
-        <button>Message</button>
-    </form>
+{% if g.user %}
+    {% if g.user.id != user.id and g.user not in user.friends %}
+        <form action="{{user.user_name}}/addfriend" method="POST">
+            <button>Add friend</button>
+        </form>
+    {% elif g.user in user.friends %}
+        <form action="{{user.user_name}}/sendmessage" method="POST">
+            <input name="content" type="text">
+            <button>Message</button>
+        </form>
+    {% endif %}
 {% endif %}
 <h3>Favorite books:</h3>
 {% for c in favorites %}
@@ -29,14 +33,17 @@
 {% for friend in user.friends %}
     {{friend.user_name}}
 {% endfor %}
-<h3>Messages:</h3>
-{% for message in user.received_messages %}
-    {{message.content}}
-{% endfor %}
-<h3>Recommendations:</h3>
-{% for recommendation in user.received_recommendations %}
-    {{recommendation.title}}
-{% endfor %}
+{% if g.user == user %}
+    <h3>Messages:</h3>
+    {% for message in user.received_messages %}
+        {{message.content}}
+    {% endfor %}
+    <h3>Recommendations:</h3>
+    {% for recommendation in user.received_recommendations %}
+     o   {{recommendation.title}}
+    {% endfor %}
+{% endif %}
 <script src="/static/user.js"></script>
 <!-- flask get static -->
+
 {% endblock %}

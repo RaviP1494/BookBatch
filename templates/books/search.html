@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block link %}
-<link rel="stylesheet" href="/static/bookSearch.css">
+<link rel="stylesheet" href="/static/styles.css">
 {% endblock %}
 {% block content %}
 {% with messages = get_flashed_messages() %}
@@ -13,14 +13,14 @@
 </ul>
 {% endif %}
 {% endwith %}
-<div id="book-search-div" class="book-search-div">
+<div id="book-search-div" class="search-div">
     <h2>Search books!</h2>
-    <form class="book-search-form">
+    <form class="search-form">
         <input id="book-search-input" type="text" name="book-search-input">
-        <button id="book-search-btn" class="book-search-btn">Go</button>
+        <button id="book-search-btn" class="search-btn">Go</button>
     </form>
 </div>
-<div class="results-div" id="results-div"></div>
+<div class="cards-container" id="results-div"></div>
 {% endblock %}
 {% block scripts %}
 <script src="/static/bookSearch.js"></script>

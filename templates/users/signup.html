@@ -1,18 +1,21 @@
 {% extends 'base.html' %}
-
+{% block link %}
+<link rel="stylesheet" href="/static/userSearch.css">
+{% endblock %}
 {% block content %}
+<div class="body-wrapper">
+    <form method="POST" id="signup-form">
+        {{ form.hidden_tag() }}
 
-<form method="POST" id="signup-form">
-    {{ form.hidden_tag() }}
+        {% for field in form if field.widget.input_type != 'hidden' %}
+        {% for error in field.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+        {{ field(placeholder=field.label.text) }}
+        {% endfor %}
 
-    {% for field in form if field.widget.input_type != 'hidden' %}
-    {% for error in field.errors %}
-    <span>{{ error }}</span>
-    {% endfor %}
-    {{ field(placeholder=field.label.text) }}
-    {% endfor %}
-
-    <button>Sign up!</button>
-</form>
+        <button>Sign up!</button>
+    </form>
+</div>
 
 {% endblock %}

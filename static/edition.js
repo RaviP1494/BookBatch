@@ -12,6 +12,8 @@ async function loadEditionData() {
         if (favoriteForm) {
             addDataToForm(favoriteForm, bookModelData);
             addDataToForm(readlistForm, bookModelData);
+        }
+        if (recommendationForm) {
             addDataToForm(recommendationForm, bookModelData);
         }
     }

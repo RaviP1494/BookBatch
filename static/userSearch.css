@@ -1,0 +1,14 @@
+.user-search-div{
+    margin:auto;
+    width:fit-content;
+    align-content: center;
+}
+
+.title{
+    text-align: center;
+}
+
+.results-div{
+    margin:auto;
+    width:260px;
+}

@@ -38,9 +38,9 @@
         </div>
         {% endif %}
     </nav>
-    <div id="child-content" class="child-content">
-        {% block content %}
-        {% endblock %}
+    <div id="body-wrapper" class="body-wrapper">
+    {% block content %}
+    {% endblock %}
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
     {% block scripts %}
