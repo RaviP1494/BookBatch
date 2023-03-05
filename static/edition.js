@@ -21,6 +21,19 @@ async function loadEditionData() {
 
 
 function showEditionData(rawData) {
+    console.log(rawData);
+    const headerTitle = document.querySelector('#header-title');
+    const headerAuthor = document.querySelector('#header-author');
+
+    const title = rawData['title'] ? rawData['title'] : null;
+    headerTitle.innerText = title;
+
+    const author = extractValuesToString(rawData['authors']);
+    console.log(author);
+    headerAuthor.innerText = author;
+
+    const hr = document.createElement('hr');
+    editionContainerDiv.append(hr);
     for (const dataKey in rawData) {
         const dataValue = extractValuesToString(rawData[dataKey]);
         const dataDiv = document.createElement('div');
@@ -50,7 +63,12 @@ function extractValuesToString(dataValue) {
             const innerDataValue = dataValue[dataKey];
             const innerDataStringValue = extractValuesToString(innerDataValue);
             if (dataKey !== 'url') {
-                retValue += `${dataKey}: ${innerDataStringValue} `;
+                if (dataKey !== 'name') {
+                    retValue += `${dataKey}: ${innerDataStringValue} `;
+                }
+                else{
+                    retValue += `${innerDataStringValue} `;
+                }
             }
         }
         return retValue;
