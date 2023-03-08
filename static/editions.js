@@ -3,7 +3,7 @@ const editionsDiv = document.querySelector('#editions-container-div');
 const workID = workDiv.dataset.workId;
 const languageNames = new Intl.DisplayNames(['en'], {
     type: 'language'
-  });
+});
 
 const openLibraryBaseUrl = 'http://openlibrary.org';
 
@@ -13,33 +13,32 @@ async function populatePage(e) {
         await populateWork();
         await populateEditions();
     }
-    catch(err){
+    catch (err) {
         console.log(err);
     }
 }
 
-async function populateWork(){
+async function populateWork() {
     const workResponse = await axios.get(`${openLibraryBaseUrl}/works/${workID}.json`);
     const workData = extractWorkData(workResponse.data);
     showWorkData(workData);
 }
 
-async function populateEditions(pageNum=0){
-    const editionsResponse = await axios.get(`${openLibraryBaseUrl}/works/${workID}/editions.json?offset=${pageNum*50}`);
-        console.dir(editionsResponse);
-        if (editionsResponse.status === 200) {
-            for (const editionEntry of editionsResponse.data.entries) {
-                const editionData = extractEditionData(editionEntry);
-                const editionDiv = makeEditionCard(editionData);
-                editionsDiv.append(editionDiv);
-            }
-            if(editionsResponse.data.size > 50){
-                await makePageIndex(editionsResponse.data.size);
-            }
+async function populateEditions(pageNum = 0) {
+    const editionsResponse = await axios.get(`${openLibraryBaseUrl}/works/${workID}/editions.json?offset=${pageNum * 50}`);
+    if (editionsResponse.status === 200) {
+        for (const editionEntry of editionsResponse.data.entries) {
+            const editionData = extractEditionData(editionEntry);
+            const editionDiv = makeEditionCard(editionData);
+            editionsDiv.append(editionDiv);
         }
+        if (editionsResponse.data.size > 50) {
+            await makePageIndex(editionsResponse.data.size);
+        }
+    }
 }
 
-async function makePageIndex(responseCount){
+async function makePageIndex(responseCount) {
     const indexDiv = document.createElement('div');
     indexDiv.setAttribute('id', 'index-div');
     indexDiv.setAttribute('class', 'index-div');
@@ -56,17 +55,17 @@ async function makePageIndex(responseCount){
     indexDiv.addEventListener('click', editionsPageNumClick);
 }
 
-async function editionsPageNumClick(e){
+async function editionsPageNumClick(e) {
     e.preventDefault();
     const pageNum = e.target.dataset.pageNum ? e.target.dataset.pageNum : null;
-    if(pageNum){
+    if (pageNum) {
         const oldIndex = document.querySelector('#index-div');
         oldIndex.remove();
     }
 
     editionsDiv.innerText = '';
 
-    await populateEditions(pageNum-1);
+    await populateEditions(pageNum - 1);
 }
 
 function showWorkData(workData) {
@@ -75,47 +74,42 @@ function showWorkData(workData) {
     title.innerText = workData.title;
     workDiv.append(title);
 
-    if(workData.description){
-        const description = document.createElement('h4');
-        description.innerText = `Description: ${workData.description}`;
+    if (workData.description) {
+        const description = document.createElement('p');
+        description.classList.add('work-detail-description');
+        description.innerHTML = `<h4>Description</h4><br>${extractValuesToString(workData.description)}`;
         workDiv.append(description);
     }
 
-    if(workData.time_periods){
+    if (workData.time_periods) {
         const time_periods = document.createElement('p');
-        time_periods.innerText = `Time Periods: ${workData.time_periods}`;
+        time_periods.innerHTML = `<h4>Time Period(s)</h4><br>${extractValuesToString(workData.time_periods)}`;
         workDiv.append(time_periods);
     }
 
-    if(workData.places){
+    if (workData.places) {
         const places = document.createElement('p');
-        places.innerText = `Places: ${workData.places}`;
+        places.innerHTML = `<h4>Place(s)</h4><br>${extractValuesToString(workData.places)}`;
         workDiv.append(places);
     }
 
-    if(workData.subject_people){
+    if (workData.subject_people) {
         const subject_people = document.createElement('p');
-        subject_people.innerText = `Characters: ${workData.subject_people}`;
+        subject_people.innerHTML = `<h4>Character(s)</h4><br>${extractValuesToString(workData.subject_people)}`;
         workDiv.append(subject_people);
     }
 
-    if(workData.subjects){
-        const subjectsDiv = document.createElement('div');
-        const subjectsHeading = document.createElement('p');
-        subjectsHeading.innerText = 'Subjects:';
-        subjectsHeading.setAttribute('style','text-align:center');
+    if (workData.subjects) {
         const subjects = document.createElement('p');
-        subjects.innerText = `${workData.subjects.join(' --- ')}`;
-        subjectsDiv.append(subjectsHeading);
-        subjectsDiv.append(subjects);
-        workDiv.append(subjectsDiv);
-    }   
+        subjects.innerHTML = `<h4>Subject(s)</h4><br>${extractValuesToString(workData.subjects)}`;
+        workDiv.append(subjects);
+    }
 }
 
 function extractEditionData(e) {
     let languages = [];
-    if(e.languages){
-        for(const languageObj of e.languages){
+    if (e.languages) {
+        for (const languageObj of e.languages) {
             languages.push(languageNames.of(languageObj['key'].split('/')[2]));
         }
     }
@@ -154,13 +148,13 @@ function formatSearchTerm(input) {
     return input.split(' ').join('+');
 }
 
-function stringifyList(list){
+function stringifyList(list) {
     let retVal = '';
     let i = 0;
-    while(i < list.length){
-        retVal+= list[i];
-        if(i!=list.length-1){
-            retVal+= ', ';
+    while (i < list.length) {
+        retVal += list[i];
+        if (i != list.length - 1) {
+            retVal += ', ';
         }
         i++;
     }
@@ -188,16 +182,16 @@ function makeEditionCard(editionData) {
 
     titleDiv.innerText = editionData.title ? editionData.title : 'title unavailable';
     titleDiv.classList.add('edition-card-title-div');
-    
+
     if (editionData.publishers) {
         publishersDiv.innerText = `Published by ${stringifyList(editionData.publishers)} on: `;
     }
 
-    publishersDiv.innerText+= editionData.publishDate ? editionData.publishDate : 'Pub Date N/A';
-    if(editionData.languages){
+    publishersDiv.innerText += editionData.publishDate ? editionData.publishDate : 'Pub Date N/A';
+    if (editionData.languages) {
         languagesDiv.innerText = `${stringifyList(editionData.languages)}`;
     }
-    else{
+    else {
         languagesDiv.innerText = 'Language N/A';
     }
     publishersDiv.classList.add('edition-card-publishers-div');
@@ -215,6 +209,46 @@ function makeEditionCard(editionData) {
     })
 
     return editionDiv;
+}
+
+function extractValuesToString(dataValue) {
+    if (typeof (dataValue) === 'string' || typeof (dataValue) === 'number') {
+        return dataValue;
+    }
+    else if (Array.isArray(dataValue)) {
+        let retValue = '';
+        let i = 0;
+        for (const item of dataValue) {
+            const innerDataStringValue = extractValuesToString(item);
+            if (i === dataValue.length - 2) {
+                retValue += `${innerDataStringValue} and `;
+            }
+            else if (i === dataValue.length - 1) {
+                retValue += `${innerDataStringValue}`;
+            }
+            else {
+                retValue += `${innerDataStringValue}, `;
+            }
+            i++;
+        }
+        return retValue;
+    }
+    else if (typeof (dataValue) === 'object') {
+        let retValue = '';
+        for (const dataKey in dataValue) {
+            const innerDataValue = dataValue[dataKey];
+            const innerDataStringValue = `${extractValuesToString(innerDataValue)} `;
+            if (dataKey !== 'url') {
+                if (dataKey !== 'name') {
+                    retValue += `${dataKey}: ${innerDataStringValue}`;
+                }
+                else {
+                    retValue += `${innerDataStringValue}`;
+                }
+            }
+        }
+        return retValue;
+    }
 }
 
 window.onload = populatePage;

@@ -1,0 +1,32 @@
+.page-title {
+    background: rgb(0,0,0);
+    background: linear-gradient(211deg, rgba(0,0,0,1) 0%, rgba(29,28,25,1) 35%, rgba(0,0,0,1) 100%);
+    width: 320px;
+    margin: auto;
+    border-radius: 45%;
+    text-align: center;
+    border: 1px solid silver;
+}
+
+.content-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 50px;
+}
+
+.content-element {
+    height: 400px;
+    width: 320px;
+    text-align: center;
+    background: rgb(255,249,173);
+    background: linear-gradient(141deg, rgba(255,249,173,1) 0%, rgba(200,203,111,1) 37%, rgba(250,255,219,1) 100%);
+    border-radius: 50px;
+    color: black;
+}
+
+.friend-action{
+    position:absolute;
+    left:1rem;
+    top:5rem;
+}

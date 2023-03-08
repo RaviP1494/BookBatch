@@ -1,49 +1,60 @@
 {% extends 'base.html' %}
+{% block link %}
+<link rel="stylesheet" href="/static/user.css">
+{% endblock %}
 {% block content %}
-
-<h1>{{user.user_name}}</h1>
+<h1 class="page-title">{{user.user_name}}</h1>
 <hr>
 {% if g.user %}
-    {% if g.user.id != user.id and g.user not in user.friends %}
-        <form action="{{user.user_name}}/addfriend" method="POST">
-            <button>Add friend</button>
-        </form>
-    {% elif g.user in user.friends %}
-        <form action="{{user.user_name}}/sendmessage" method="POST">
-            <input name="content" type="text">
-            <button>Message</button>
-        </form>
-    {% endif %}
+{% if g.user.id != user.id and g.user not in user.friends %}
+<form class="friend-action" action="{{user.user_name}}/addfriend" method="POST">
+    <button>Add friend</button>
+</form>
+{% elif g.user in user.friends %}
+<form class="friend-action" action="{{user.user_name}}/sendmessage" method="POST">
+    <input name="content" type="text">
+    <button>Message</button>
+</form>
 {% endif %}
-<h3>Favorite books:</h3>
-{% for c in favorites %}
-    {% if c.book.title %}
-        {{ c.book.title }}
-        {{ c.book.olid }}
-    {% endif %}
-{% endfor %}
-<h3>Books read:</h3>
-{% for c in read_list %}
-    {% if c.book.title %}
-        {{ c.book.title }}
-        {{ c.book.olid }}
-    {% endif %}
-{% endfor %}
-<h3>Friends:</h3>
-{% for friend in user.friends %}
-    {{friend.user_name}}
-{% endfor %}
-{% if g.user == user %}
-    <h3>Messages:</h3>
-    {% for message in user.received_messages %}
-        {{message.content}}
-    {% endfor %}
-    <h3>Recommendations:</h3>
-    {% for recommendation in user.received_recommendations %}
-     o   {{recommendation.title}}
-    {% endfor %}
 {% endif %}
+<div class="content-container">
+    <div class="content-element friends">
+        <h3>Friends:</h3>
+        {% for friend in user.friends %}
+        <a href="/users/{{friend.user_name}}">{{friend.user_name}}</a><br>
+        {% endfor %}
+    </div>
+    <div class="content-element favorites">
+        <h3>Favorite books:</h3>
+        {% for c in favorites %}
+        {% if c.book.title %}
+        <a href="/books/editions/{{c.book.olid}}">{{ c.book.title }}</a><br>
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="content-element read-list">
+        <h3>Books read:</h3>
+        {% for c in read_list %}
+        {% if c.book.title %}
+        <a href="/books/editions/{{c.book.olid}}">{{ c.book.title }}</a><br>
+        {% endif %}
+        {% endfor %}
+    </div>
+    {% if g.user == user %}
+    <div class="content-element recommendations">
+        <h3>Recommendations:</h3>
+        {% for recommendation in user.received_recommendations %}
+        <a href="/books/editions/{{recommendation.book.olid}}">{{recommendation.book.title}}</a> - {{recommendation.sender.user_name}}
+        {% endfor %}
+    </div>
+    <div class="content-element messages">
+        <h3>Messages:</h3>
+        {% for message in user.received_messages %}
+        <p>{{message.sender.user_name}} @{{message.create_time}}</p>
+        <p>"{{message.content}}"</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
 <script src="/static/user.js"></script>
-<!-- flask get static -->
-
 {% endblock %}

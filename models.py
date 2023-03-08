@@ -26,10 +26,8 @@ class User(db.Model):
         "Message", primaryjoin="User.id==Message.receiver_id"
     )
     received_recommendations = db.relationship(
-        "Book", 
-        secondary="recommendations",
-        primaryjoin="User.id==Recommendation.receiver_id",
-        secondaryjoin="Recommendation.book_id==Book.id"
+        "Recommendation",
+        primaryjoin="User.id==Recommendation.receiver_id"
     )
 
     @classmethod
@@ -65,12 +63,8 @@ class Friendship(db.Model):
 
     __tablename__ = "friendship"
 
-    user_id = db.Column(
-        db.Integer, db.ForeignKey("users.id"), primary_key=True
-    )
-    friend_id = db.Column(
-        db.Integer, db.ForeignKey("users.id"), primary_key=True
-    )
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), primary_key=True)
+    friend_id = db.Column(db.Integer, db.ForeignKey("users.id"), primary_key=True)
 
 
 class Message(db.Model):
@@ -82,6 +76,17 @@ class Message(db.Model):
     sender_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     receiver_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     content = db.Column(db.Text)
+    create_time = db.Column(
+        db.DateTime, nullable=False, default=datetime.utcnow()
+    )
+    sender = db.relationship(
+        "User",
+        primaryjoin="User.id == Message.sender_id"
+    )
+    receiver = db.relationship(
+        "User",
+        primaryjoin="User.id == Message.receiver_id"
+    )
 
 
 class Recommendation(db.Model):
@@ -93,6 +98,18 @@ class Recommendation(db.Model):
     sender_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     receiver_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     book_id = db.Column(db.Integer, db.ForeignKey("books.id"))
+    book = db.relationship(
+        "Book",
+        primaryjoin="Book.id == Recommendation.book_id"
+    )
+    sender = db.relationship(
+        "User",
+        primaryjoin="User.id == Recommendation.sender_id"
+    )
+    receiver = db.relationship(
+        "User",
+        primaryjoin="User.id == Recommendation.receiver_id"
+    )
 
 
 class Book(db.Model):
@@ -119,9 +136,7 @@ class BookCollect(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     collection_name = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="cascade"))
-    book_id = db.Column(
-        db.Integer, db.ForeignKey("books.id", ondelete="cascade"), unique=True
-    )
+    book_id = db.Column(db.Integer, db.ForeignKey("books.id", ondelete="cascade"))
 
 
 def connect_db(app):

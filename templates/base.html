@@ -10,9 +10,9 @@
         Home Page
         {% endblock %}
     </title>
-    <link rel="stylesheet" href="/static/base.css">
     {% block link %}
     {% endblock %}
+    <link rel="stylesheet" href="/static/base.css">
 </head>
 
 <body>
@@ -22,9 +22,6 @@
         <div class="nav-div-left">
             <a href="/books/search" class="nav-anchor">Search Books</a>
             <a href="/users/search" class="nav-anchor">Search Users</a>
-        </div>
-        <div class="title-div-header">
-            <h1>Reader's Pace</h1>
         </div>
         {% if not g.user %}
         <div class="nav-div-right">
@@ -45,7 +42,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.2/axios.min.js"></script>
     {% block scripts %}
     {% endblock %}
-    <!-- <script src="/static/base.js"></script> -->
 </body>
 
 </html>

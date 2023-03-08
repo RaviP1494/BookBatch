@@ -21,8 +21,8 @@ app.config["SECRET_KEY"] = "temporary"
 connect_db(app)
 
 # with app.app_context():
-    # db.drop_all()
-    # db.create_all()
+#     db.drop_all()
+#     db.create_all()
 
 
 def do_login(user):
@@ -80,7 +80,7 @@ def signup():
             db.session.add(user)
             db.session.commit()
             do_login(user)
-            return redirect("/")
+            return redirect(f"/users/{form.username.data}")
 
     else:
         return render_template("/users/signup.html", form=form)
@@ -98,7 +98,7 @@ def login():
             raise Exception("Invalid credentials")
         elif user:
             do_login(user)
-            return redirect("/")
+            return redirect(f"/users/{form.username.data}")
     return render_template("/users/login.html", form=form)
 
 
@@ -177,8 +177,8 @@ def addToCollection(olid, cname):
                 author=request.form["author"],
                 publish_date=request.form["publish_date"],
             )
-        db.session.add(book)
-        db.session.commit()
+            db.session.add(book)
+            db.session.commit()
         collection_item = BookCollect(
             user_id=g.user.id, collection_name=cname, book_id=book.id
         )
@@ -193,3 +193,4 @@ def addToCollection(olid, cname):
 def logout():
     do_logout()
     return redirect("/")
+
